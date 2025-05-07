@@ -486,6 +486,11 @@ section {
     background: #f1f7ff;
     transition: background 0.2s;
 }
+.schedule-table td:first-child {
+    white-space: nowrap;
+    font-weight: 500;
+    color: var(--primary-color);
+}
 @media (max-width: 600px) {
     .festival-schedule {
         padding: 1rem 0.2rem;

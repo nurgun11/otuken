@@ -44,8 +44,30 @@ document.addEventListener('DOMContentLoaded', () => {
         // Обновляем все элементы с атрибутом data-lang
         document.querySelectorAll('[data-lang]').forEach(element => {
             const key = element.getAttribute('data-lang');
-            if (translations[lang] && translations[lang][key]) {
-                element.textContent = translations[lang][key];
+            
+            // Проверяем, содержит ли ключ суффикс языка
+            const baseKey = key.replace(/-ru$|-en$|-mn$|-tr$/, '');
+            const langKey = `${baseKey}-${lang}`;
+            
+            // Если есть перевод для текущего языка
+            if (translations[lang] && translations[lang][langKey]) {
+                // Проверяем, содержит ли текст HTML-теги
+                if (translations[lang][langKey].includes('<br>')) {
+                    element.innerHTML = translations[lang][langKey];
+                } else {
+                    element.textContent = translations[lang][langKey];
+                }
+            }
+            
+            // Управляем видимостью элементов в зависимости от языка
+            if (key.endsWith('-ru')) {
+                element.style.display = lang === 'ru' ? '' : 'none';
+            } else if (key.endsWith('-en')) {
+                element.style.display = lang === 'en' ? '' : 'none';
+            } else if (key.endsWith('-mn')) {
+                element.style.display = lang === 'mn' ? '' : 'none';
+            } else if (key.endsWith('-tr')) {
+                element.style.display = lang === 'tr' ? '' : 'none';
             }
         });
         
