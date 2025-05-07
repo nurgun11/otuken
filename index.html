@@ -521,15 +521,14 @@
             </div>
             <form id="extended-registration-form" class="extended-registration-form modal-checkboxes">
                 <div class="form-group">
-                    <input type="text" id="fullname" name="fullname" required placeholder="Ф.И.О. *">
+                    <input type="text" id="fullname" name="fullname" required placeholder="Ф.И.О. *" data-lang="form-fullname-placeholder">
                 </div>
                 <div class="form-group">
-                    <input type="text" id="organization" name="organization" placeholder="Организация или название ансамбля">
+                    <input type="text" id="organization" name="organization" placeholder="Организация или название ансамбля" data-lang="form-organization-placeholder">
                 </div>
                 <div class="form-group">
-                    <!-- <label for="country">Страна *</label> -->
                     <select id="country" name="country" required>
-                        <option value="" disabled selected hidden>Страна *</option>
+                        <option value="" disabled selected hidden data-lang="form-country-placeholder">Страна *</option>
                         <option value="RU">Россия</option>
                         <option value="MN">Монголия</option>
                         <option value="TR">Турция</option>
@@ -544,68 +543,69 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="city" name="city" placeholder="Город, посёлок, село">
+                    <input type="text" id="city" name="city" placeholder="Город, посёлок, село" data-lang="form-city-placeholder">
                 </div>
                 <div class="form-group">
                     <div class="events-label" data-lang="form-events">Выберите одно или несколько мероприятий для участия</div>
                     <div class="events-grid">
                         <div class="event-option">
                             <input type="checkbox" id="event1" name="events" value="event1">
-                            <label for="event1">Народные песни и танцы</label>
+                            <label for="event1" data-lang="form-event1-label">Народные песни и танцы</label>
                         </div>
                         <div class="event-option">
                             <input type="checkbox" id="event2" name="events" value="event2">
-                            <label for="event2">Национальные костюмы</label>
+                            <label for="event2" data-lang="form-event2-label">Национальные костюмы</label>
                         </div>
                         <div class="event-option">
                             <input type="checkbox" id="event3" name="events" value="event3">
-                            <label for="event3">Настольные игры</label>
+                            <label for="event3" data-lang="form-event3-label">Настольные игры</label>
                         </div>
                         <div class="event-option">
                             <input type="checkbox" id="event4" name="events" value="event4">
-                            <label for="event4">Национальные блюда</label>
+                            <label for="event4" data-lang="form-event4-label">Национальные блюда</label>
                         </div>
                         <div class="event-option">
                             <input type="checkbox" id="event5" name="events" value="event5">
-                            <label for="event5">Конная стрельба из лука</label>
+                            <label for="event5" data-lang="form-event5-label">Конная стрельба из лука</label>
                         </div>
                         <div class="event-option">
                             <input type="checkbox" id="event6" name="events" value="event6">
-                            <label for="event6">Исторический конный парад</label>
+                            <label for="event6" data-lang="form-event6-label">Исторический конный парад</label>
                         </div>
                         <div class="event-option">
                             <input type="checkbox" id="event7" name="events" value="event7">
-                            <label for="event7">Монгольская борьба</label>
+                            <label for="event7" data-lang="form-event7-label">Монгольская борьба</label>
                         </div>
                         <div class="event-option">
                             <input type="checkbox" id="event8" name="events" value="event8">
-                            <label for="event8">Борьба на поясах «Куреш»</label>
+                            <label for="event8" data-lang="form-event8-label">Борьба на поясах «Куреш»</label>
                         </div>
                         <div class="event-option">
                             <input type="checkbox" id="event9" name="events" value="event9">
-                            <label for="event9">Якутская борьба «Хапсаҕай»</label>
+                            <label for="event9" data-lang="form-event9-label">Якутская борьба «Хапсаҕай»</label>
                         </div>
                         <div class="event-option">
                             <input type="checkbox" id="event10" name="events" value="event10">
-                            <label for="event10">Мас-рестлинг</label>
+                            <label for="event10" data-lang="form-event10-label">Мас-рестлинг</label>
                         </div>
                         <div class="event-option">
                             <input type="checkbox" id="event11" name="events" value="event11">
-                            <label for="event11">Урианхайская стрельба</label>
+                            <label for="event11" data-lang="form-event11-label">Урианхайская стрельба</label>
                         </div>
                         <div class="event-option">
                             <input type="checkbox" id="event12" name="events" value="event12">
-                            <label for="event12">Перенос 130 кг камня</label>
+                            <label for="event12" data-lang="form-event12-label">Перенос 130 кг камня</label>
                         </div>
                     </div>
                 </div>  
                 <div class="form-group">
                     <div class="event-option">
-                        <input type="checkbox" id="spectator" name="spectator" value="true"><label for="spectator" data-lang="form-spectator">Буду участвовать в фестивале как зритель</label>
+                        <input type="checkbox" id="spectator" name="spectator" value="true">
+                        <label for="spectator" data-lang="form-spectator-label">Буду участвовать в фестивале как зритель</label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="email" id="email" name="email" required placeholder="Email *">
+                    <input type="email" id="email" name="email" required placeholder="Email *" data-lang="form-email-placeholder">
                 </div>
                 <button type="submit" class="btn btn-primary" data-lang="register">Зарегистрироваться</button>
             </form>

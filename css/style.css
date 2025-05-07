@@ -649,11 +649,13 @@ section {
     font-size: 1.2em;
     text-transform: uppercase;
     letter-spacing: 2px;
+    color: white;
 }
 
 .calendar-year {
     font-size: 0.9em;
     opacity: 0.8;
+    color: white;
 }
 
 /* Contact Section */

@@ -68,6 +68,22 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (key.endsWith('-tr')) {
                 element.style.display = lang === 'tr' ? '' : 'none';
             }
+            
+            // Обновляем плейсхолдеры для полей ввода и селектов
+            if (element.tagName === 'INPUT' || element.tagName === 'SELECT') {
+                const placeholderKey = element.getAttribute('data-lang');
+                if (translations[lang] && translations[lang][placeholderKey]) {
+                    element.placeholder = translations[lang][placeholderKey];
+                }
+            }
+            
+            // Обновляем текст для опций
+            if (element.tagName === 'OPTION') {
+                const optionKey = element.getAttribute('data-lang');
+                if (translations[lang] && translations[lang][optionKey]) {
+                    element.textContent = translations[lang][optionKey];
+                }
+            }
         });
         
         // Обновляем атрибут lang у html
