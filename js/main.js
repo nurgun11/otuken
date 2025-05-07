@@ -47,15 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Проверяем, содержит ли ключ суффикс языка
             const baseKey = key.replace(/-ru$|-en$|-mn$|-tr$/, '');
-            const langKey = `${baseKey}-${lang}`;
             
             // Если есть перевод для текущего языка
-            if (translations[lang] && translations[lang][langKey]) {
+            if (translations[lang] && translations[lang][baseKey]) {
                 // Проверяем, содержит ли текст HTML-теги
-                if (translations[lang][langKey].includes('<br>')) {
-                    element.innerHTML = translations[lang][langKey];
+                if (translations[lang][baseKey].includes('<br>')) {
+                    element.innerHTML = translations[lang][baseKey];
                 } else {
-                    element.textContent = translations[lang][langKey];
+                    element.textContent = translations[lang][baseKey];
                 }
             }
             
