@@ -132,19 +132,30 @@ a {
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 1200px;
     padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.hero-text {
+    flex: 1;
+    text-align: left;
 }
 
 .hero-title {
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
+    text-align: left;
 }
 
 .hero-subtitle {
     font-size: 1.5rem;
     margin-bottom: 2rem;
+    text-align: left;
 }
 
 .cta-button {
@@ -475,12 +486,23 @@ section {
         text-align: center;
     }
 
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-text {
+        text-align: center;
+    }
+    
     .hero-title {
         font-size: 2.5rem;
+        text-align: center;
     }
-
+    
     .hero-subtitle {
         font-size: 1.2rem;
+        text-align: center;
     }
 
     .modal-content {
@@ -576,4 +598,66 @@ section {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
+}
+
+.tear-off-calendar {
+    position: relative;
+    width: 200px;
+    height: 250px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transform: rotate(-2deg);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.tear-off-calendar:hover {
+    transform: rotate(0deg);
+}
+
+.calendar-top {
+    background: #e74c3c;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+}
+
+.calendar-top::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.calendar-date {
+    font-size: 4.5em;
+    font-weight: bold;
+    margin: 20px 0;
+    text-align: center;
+    color: #2c3e50;
+}
+
+.calendar-month {
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.calendar-year {
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+/* Contact Section */
+.contact {
+    padding: 80px 0;
+    background-color: #f9f9f9;
 }

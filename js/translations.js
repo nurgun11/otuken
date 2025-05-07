@@ -2,7 +2,6 @@ const translations = {
     ru: {
         'nav-about': 'О фестивале',
         'nav-program': 'Программа',
-        'nav-registration': 'Регистрация',
         'nav-contact': 'Контакты',
         'hero-title': 'Международный этнокультурный фестиваль Отюкен',
         'hero-subtitle': 'Объединяем культуры, сохраняем традиции',
@@ -104,12 +103,12 @@ const translations = {
         'contact-phone': '+7 (999) 123-45-67',
         'contact-email': 'info@otyuken-fest.ru',
         'footer-logo': 'Отюкен',
-        'registration-text': 'Для участия в фестивале, пожалуйста, нажмите кнопку "Зарегистрироваться" и заполните форму.'
+        'registration-text': 'Для участия в фестивале, пожалуйста, нажмите кнопку "Зарегистрироваться" и заполните форму.',
+        'month-ru': 'Август'
     },
     en: {
         'nav-about': 'About',
         'nav-program': 'Program',
-        'nav-registration': 'Registration',
         'nav-contact': 'Contact',
         'hero-title': 'International Ethnocultural Festival Otyuken',
         'hero-subtitle': 'Uniting Cultures, Preserving Traditions',
@@ -211,12 +210,12 @@ const translations = {
         'contact-phone': '+7 (999) 123-45-67',
         'contact-email': 'info@otyuken-fest.ru',
         'footer-logo': 'Otyuken',
-        'registration-text': 'To participate in the festival, please click the "Register" button and fill out the form.'
+        'registration-text': 'To participate in the festival, please click the "Register" button and fill out the form.',
+        'month-en': 'August'
     },
     mn: {
         'nav-about': 'Фестивалийн тухай',
         'nav-program': 'Хөтөлбөр',
-        'nav-registration': 'Бүртгүүлэх',
         'nav-contact': 'Холбоо барих',
         'hero-title': 'Олон Улсын Этнокультур Фестиваль Отюкен',
         'hero-subtitle': 'Соёлуудыг нэгтгэж, уламжлалыг хадгалах',
@@ -318,12 +317,12 @@ const translations = {
         'contact-phone': '+7 (999) 123-45-67',
         'contact-email': 'info@otyuken-fest.ru',
         'footer-logo': 'Отюкен',
-        'registration-text': 'Фестивальд оролцохын тулд "Бүртгүүлэх" товчлуур дээр дараад маягтыг бөглөнө үү.'
+        'registration-text': 'Фестивальд оролцохын тулд "Бүртгүүлэх" товчлуур дээр дараад маягтыг бөглөнө үү.',
+        'month-mn': 'Наймдугаар сар'
     },
     tr: {
         'nav-about': 'Hakkında',
         'nav-program': 'Program',
-        'nav-registration': 'Kayıt',
         'nav-contact': 'İletişim',
         'hero-title': 'Uluslararası Etnokültürel Otyuken Festivali',
         'hero-subtitle': 'Kültürleri Birleştiriyor, Gelenekleri Koruyoruz',
@@ -425,6 +424,7 @@ const translations = {
         'contact-phone': '+7 (999) 123-45-67',
         'contact-email': 'info@otyuken-fest.ru',
         'footer-logo': 'Otyuken',
-        'registration-text': 'Festivale katılmak için lütfen "Kayıt Ol" düğmesine tıklayın ve formu doldurun.'
+        'registration-text': 'Festivale katılmak için lütfen "Kayıt Ol" düğmesine tıklayın ve formu doldurun.',
+        'month-tr': 'Ağustos'
     }
 }; 
