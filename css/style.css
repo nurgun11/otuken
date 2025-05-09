@@ -694,10 +694,42 @@ section {
 }
 
 @media (max-width: 600px) {
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding-top: 60px;
+        padding-bottom: 30px;
+    }
+    .hero-content {
+        flex-direction: column;
+        gap: 18px;
+        padding: 0 6vw;
+    }
     .otuken-hero-logo {
-        max-width: 90vw;
-        width: 90vw;
-        min-width: 120px;
+        max-width: 80vw;
+        width: 80vw;
+        min-width: 90px;
+        margin-bottom: 10px;
+    }
+    .hero-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.7rem;
+    }
+    .hero-date {
+        font-size: 1.05rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.2rem;
+        text-align: center;
+    }
+    .cta-button {
+        font-size: 1rem;
+        padding: 0.8rem 1.2rem;
+        width: 100%;
+        box-sizing: border-box;
     }
 }
 
