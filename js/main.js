@@ -178,4 +178,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     `;
     document.head.appendChild(style);
+
+    var logo = document.querySelector('.otuken-hero-logo');
+    var heroText = document.querySelector('.hero-text');
+    if (logo) logo.classList.add('visible');
+    if (heroText) heroText.classList.add('visible');
 }); 
