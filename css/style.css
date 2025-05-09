@@ -480,11 +480,20 @@ section {
     }
 
     .language-selector {
+        display: none;
         position: fixed;
         bottom: 2rem;
         left: 50%;
         transform: translateX(-50%);
         z-index: 1001;
+        background: var(--white);
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+        padding: 0.5rem 1rem;
+        gap: 0.5rem;
+    }
+    .nav-links.active .language-selector {
+        display: flex;
     }
 
     .nav-container,
