@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Инициализация текущего языка
-    let currentLang = 'ru';
+    let currentLang = 'en';
+    switchLanguage('en');
+
+    document.body.style.visibility = 'visible';
     
     // Модальное окно
     const modal = document.getElementById('registration-modal');
@@ -46,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const key = element.getAttribute('data-lang');
             
             // Проверяем, содержит ли ключ суффикс языка
-            const baseKey = key.replace(/-ru$|-en$|-mn$|-tr$/, '');
+            const baseKey = key.replace(/-en$|-mn$|-tr$|-ru$/, '');
             
             // Если есть перевод для текущего языка
             if (translations[lang] && translations[lang][baseKey]) {
@@ -89,6 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Обновляем атрибут lang у html
         document.documentElement.lang = lang;
     }
+
+    
+
     
     // Обработчики для кнопок переключения языка
     document.querySelectorAll('.lang-btn').forEach(btn => {
