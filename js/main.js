@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
     
-    document.querySelectorAll('.program-card, .about-content, .contact-item').forEach(element => {
+    document.querySelectorAll('.program-card, .about-content, .contact-item, .news-card').forEach(element => {
         observer.observe(element);
     });
     
