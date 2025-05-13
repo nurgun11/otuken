@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Открыта регистрация участников - Фестиваль Отюкен</title>
+    <style>
+        :root {
+            --primary-color: #2C3E50;
+            --secondary-color: #E74C3C;
+            --accent-color: #F1C40F;
+            --text-color: #333;
+            --light-bg: #ECF0F1;
+            --white: #FFFFFF;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--white);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .news-header {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 80px 0;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .news-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .news-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .news-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .news-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+        }
+        
+        .news-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .news-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .news-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .news-tag {
+            background: var(--light-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .news-tag:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .news-share {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .share-button {
+            background: var(--light-bg);
+            color: var(--primary-color);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+        
+        .share-button:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .news-related {
+            background: var(--light-bg);
+            padding: 3rem 0;
+        }
+        
+        .related-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .related-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .related-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .related-image {
+            height: 180px;
+        }
+        
+        .related-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .related-content {
+            padding: 1.5rem;
+        }
+        
+        .related-card-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .related-date {
+            font-size: 0.875rem;
+            color: #777;
+            margin-bottom: 1rem;
+        }
+        
+        .related-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .related-link:hover {
+            text-decoration: underline;
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .back-button:hover {
+            color: var(--secondary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .news-title {
+                font-size: 2rem;
+            }
+            
+            .news-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="news-header">
+        <div class="container">
+            <h1 class="news-title">Открыта регистрация участников</h1>
+            <div class="news-meta">
+                <div class="news-meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>15 марта 2025</span>
+                </div>
+                <div class="news-meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>Оргкомитет фестиваля</span>
+                </div>
+                <div class="news-meta-item">
+                    <i class="fas fa-folder"></i>
+                    <span>Новости фестиваля</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Вернуться к списку новостей
+        </a>
+        
+        <div class="news-content">
+            <img src="images/news/placeholder.html" alt="Регистрация участников" class="news-image">
+            
+            <div class="news-text">
+                <p>Мы рады сообщить, что открыта регистрация для участников фестиваля Отюкен 2025. Заполните форму регистрации, чтобы принять участие в этом уникальном культурном событии.</p>
+                
+                <p>Международный этнокультурный фестиваль Отюкен, который пройдет 7 августа 2025 года в Монголии в сомоне Сэргэлэн аймака Туве, приглашает к участию представителей тюркских и монгольских народов, а также всех, кто интересуется традиционной культурой, искусством и ремеслами.</p>
+                
+                <p>В программе фестиваля:</p>
+                <ul>
+                    <li>Обряды очищения и поклонения</li>
+                    <li>Массовые танцы и концерты</li>
+                    <li>Выступления с национальными инструментами и горловым пением</li>
+                    <li>Конные парады и спортивные состязания</li>
+                    <li>Мастер-классы по ремёслам и национальной кухне</li>
+                    <li>Дегустации традиционных блюд</li>
+                    <li>Исторические реконструкции</li>
+                    <li>Показ национальных костюмов</li>
+                    <li>Исполнение эпосов и улигеров</li>
+                </ul>
+                
+                <p>Для регистрации необходимо заполнить форму на нашем сайте, указав, в каких мероприятиях вы планируете принять участие. Вы можете зарегистрироваться как индивидуальный участник или как представитель организации или творческого коллектива.</p>
+                
+                <p>Регистрация открыта до 15 июля 2025 года. Количество мест для участников ограничено, поэтому рекомендуем не откладывать регистрацию на последний момент.</p>
+                
+                <p>Если у вас возникли вопросы относительно регистрации или участия в фестивале, пожалуйста, свяжитесь с нами по электронной почте info@otuken-fest.ru или по телефону +7 (999) 123-45-67.</p>
+                
+                <p>Ждем вас на фестивале Отюкен 2025!</p>
+            </div>
+            
+            <div class="news-tags">
+                <a href="#" class="news-tag">Регистрация</a>
+                <a href="#" class="news-tag">Участники</a>
+                <a href="#" class="news-tag">Фестиваль 2025</a>
+                <a href="#" class="news-tag">Отюкен</a>
+            </div>
+            
+            <div class="news-share">
+                <button class="share-button">
+                    <i class="fab fa-facebook-f"></i> Поделиться
+                </button>
+                <button class="share-button">
+                    <i class="fab fa-twitter"></i> Твитнуть
+                </button>
+                <button class="share-button">
+                    <i class="fab fa-telegram"></i> Отправить
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="news-related">
+        <div class="container">
+            <h2 class="related-title">Похожие новости</h2>
+            <div class="related-grid">
+                <div class="related-card">
+                    <div class="related-image">
+                        <img src="images/news/placeholder.html" alt="Новость 2" class="related-img">
+                    </div>
+                    <div class="related-content">
+                        <h3 class="related-card-title">Объявлены почетные гости фестиваля</h3>
+                        <p class="related-date">10 февраля 2025</p>
+                        <a href="#" class="related-link">Подробнее</a>
+                    </div>
+                </div>
+                <div class="related-card">
+                    <div class="related-image">
+                        <img src="images/news/placeholder.html" alt="Новость 3" class="related-img">
+                    </div>
+                    <div class="related-content">
+                        <h3 class="related-card-title">Расширенная программа фестиваля</h3>
+                        <p class="related-date">5 января 2025</p>
+                        <a href="#" class="related-link">Подробнее</a>
+                    </div>
+                </div>
+                <div class="related-card">
+                    <div class="related-image">
+                        <img src="images/news/placeholder.html" alt="Новость 4" class="related-img">
+                    </div>
+                    <div class="related-content">
+                        <h3 class="related-card-title">Место проведения фестиваля</h3>
+                        <p class="related-date">15 декабря 2024</p>
+                        <a href="#" class="related-link">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WordPress шаблонные теги -->
+    <!--
+    <?php get_header(); ?>
+
+    <div class="news-header">
+        <div class="container">
+            <h1 class="news-title"><?php the_title(); ?></h1>
+            <div class="news-meta">
+                <div class="news-meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span><?php echo get_the_date(); ?></span>
+                </div>
+                <div class="news-meta-item">
+                    <i class="fas fa-user"></i>
+                    <span><?php the_author(); ?></span>
+                </div>
+                <div class="news-meta-item">
+                    <i class="fas fa-folder"></i>
+                    <span><?php the_category(', '); ?></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <a href="<?php echo get_post_type_archive_link('post'); ?>" class="back-button">
+            <i class="fas fa-arrow-left"></i> Вернуться к списку новостей
+        </a>
+        
+        <div class="news-content">
+            <?php if(has_post_thumbnail()): ?>
+                <img src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php the_title_attribute(); ?>" class="news-image">
+            <?php endif; ?>
+            
+            <div class="news-text">
+                <?php the_content(); ?>
+            </div>
+            
+            <div class="news-tags">
+                <?php
+                $tags = get_the_tags();
+                if($tags) {
+                    foreach($tags as $tag) {
+                        echo '<a href="' . get_tag_link($tag->term_id) . '" class="news-tag">' . $tag->name . '</a>';
+                    }
+                }
+                ?>
+            </div>
+            
+            <div class="news-share">
+                <button class="share-button" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>', '_blank')">
+                    <i class="fab fa-facebook-f"></i> Поделиться
+                </button>
+                <button class="share-button" onclick="window.open('https://twitter.com/intent/tweet?url=<?php the_permalink(); ?>&text=<?php the_title(); ?>', '_blank')">
+                    <i class="fab fa-twitter"></i> Твитнуть
+                </button>
+                <button class="share-button" onclick="window.open('https://t.me/share/url?url=<?php the_permalink(); ?>&text=<?php the_title(); ?>', '_blank')">
+                    <i class="fab fa-telegram"></i> Отправить
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="news-related">
+        <div class="container">
+            <h2 class="related-title">Похожие новости</h2>
+            <div class="related-grid">
+                <?php
+                $related = new WP_Query(
+                    array(
+                        'category__in'   => wp_get_post_categories(get_the_ID()),
+                        'posts_per_page' => 3,
+                        'post__not_in'   => array(get_the_ID())
+                    )
+                );
+                
+                if($related->have_posts()) {
+                    while($related->have_posts()) {
+                        $related->the_post();
+                ?>
+                <div class="related-card">
+                    <div class="related-image">
+                        <?php if(has_post_thumbnail()): ?>
+                            <img src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php the_title_attribute(); ?>" class="related-img">
+                        <?php else: ?>
+                            <img src="<?php echo get_template_directory_uri(); ?>/images/placeholder.jpg" alt="<?php the_title_attribute(); ?>" class="related-img">
+                        <?php endif; ?>
+                    </div>
+                    <div class="related-content">
+                        <h3 class="related-card-title"><?php the_title(); ?></h3>
+                        <p class="related-date"><?php echo get_the_date(); ?></p>
+                        <a href="<?php the_permalink(); ?>" class="related-link">Подробнее</a>
+                    </div>
+                </div>
+                <?php
+                    }
+                    wp_reset_postdata();
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+
+    <?php get_footer(); ?>
+    -->
+</body>
+</html> 
