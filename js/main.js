@@ -1,166 +1,124 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Инициализация текущего языка
-    let currentLang = 'en';
-    switchLanguage('en');
+/**
+ * Основной JavaScript файл для темы Otuken Festival
+ */
 
-    document.body.style.visibility = 'visible';
-    
-    // Модальное окно
-    const modal = document.getElementById('registration-modal');
-    const registerButtons = document.querySelectorAll('[data-action="register"]');
-    const closeModal = document.querySelector('.close-modal');
-    
-    // Открытие модального окна
-    registerButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
+jQuery(document).ready(function($) {
+    'use strict';
+
+    // Показываем страницу после загрузки
+    $('body').addClass('loaded');
+
+    // Переключение языка
+    $('.lang-btn').on('click', function() {
+        const lang = $(this).data('lang');
+        switchLanguage(lang);
+    });
+
+    // Функция переключения языка
+    function switchLanguage(lang) {
+        // Активируем кнопку выбранного языка
+        $('.lang-btn').removeClass('active');
+        $(`.lang-btn[data-lang="${lang}"]`).addClass('active');
+
+        // Переключаем тексты
+        $('[data-lang]').each(function() {
+            const key = $(this).data('lang');
+            const langKey = key.endsWith(`-${lang}`) ? key : key.replace(/-[a-z]{2}$/, `-${lang}`);
+            
+            // Проверяем, есть ли перевод для этого элемента
+            if (typeof otukenTranslations !== 'undefined' && otukenTranslations[lang] && otukenTranslations[lang][key]) {
+                $(this).text(otukenTranslations[lang][key]);
+            } else if ($(this).is('input, textarea')) {
+                // Для полей ввода обновляем placeholder
+                if (typeof otukenTranslations !== 'undefined' && otukenTranslations[lang] && otukenTranslations[lang][key]) {
+                    $(this).attr('placeholder', otukenTranslations[lang][key]);
+                }
+            } else if (key.endsWith('-ru') || key.endsWith('-en') || key.endsWith('-tr') || key.endsWith('-mn')) {
+                // Для элементов с языковыми суффиксами
+                if (key.endsWith(`-${lang}`)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            }
         });
+
+        // Сохраняем выбранный язык в куки
+        saveLangPreference(lang);
+    }
+
+    // Сохранение выбранного языка
+    function saveLangPreference(lang) {
+        $.ajax({
+            url: otukenData.ajaxurl,
+            type: 'POST',
+            data: {
+                action: 'otuken_switch_language',
+                lang: lang,
+                nonce: otukenData.nonce
+            },
+            success: function(response) {
+                console.log('Language switched to ' + lang);
+            }
+        });
+    }
+
+    // Модальное окно регистрации
+    const modal = $('#registration-modal');
+    const registerBtn = $('.register-btn');
+    const closeModal = $('.close-modal');
+
+    registerBtn.on('click', function(e) {
+        e.preventDefault();
+        modal.fadeIn();
+        $('body').addClass('modal-open');
     });
-    
-    // Закрытие модального окна
-    closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
+
+    closeModal.on('click', function() {
+        modal.fadeOut();
+        $('body').removeClass('modal-open');
     });
-    
-    // Закрытие модального окна при клике вне его
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = '';
+
+    $(window).on('click', function(e) {
+        if ($(e.target).is(modal)) {
+            modal.fadeOut();
+            $('body').removeClass('modal-open');
         }
     });
-    
-    // Функция для переключения языка
-    function switchLanguage(lang) {
-        currentLang = lang;
-        
-        // Обновляем активную кнопку языка
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.classList.remove('active');
-            if (btn.getAttribute('data-lang') === lang) {
-                btn.classList.add('active');
-            }
-        });
-        
-        // Обновляем все элементы с атрибутом data-lang
-        document.querySelectorAll('[data-lang]').forEach(element => {
-            const key = element.getAttribute('data-lang');
-            
-            // Проверяем, содержит ли ключ суффикс языка
-            const baseKey = key.replace(/-en$|-mn$|-tr$|-ru$/, '');
-            
-            // Если есть перевод для текущего языка
-            if (translations[lang] && translations[lang][baseKey]) {
-                // Проверяем, содержит ли текст HTML-теги
-                if (translations[lang][baseKey].includes('<br>')) {
-                    element.innerHTML = translations[lang][baseKey];
-                } else {
-                    element.textContent = translations[lang][baseKey];
-                }
-            }
-            
-            // Управляем видимостью элементов в зависимости от языка
-            if (key.endsWith('-ru')) {
-                element.style.display = lang === 'ru' ? '' : 'none';
-            } else if (key.endsWith('-en')) {
-                element.style.display = lang === 'en' ? '' : 'none';
-            } else if (key.endsWith('-mn')) {
-                element.style.display = lang === 'mn' ? '' : 'none';
-            } else if (key.endsWith('-tr')) {
-                element.style.display = lang === 'tr' ? '' : 'none';
-            }
-            
-            // Обновляем плейсхолдеры для полей ввода и селектов
-            if (element.tagName === 'INPUT' || element.tagName === 'SELECT') {
-                const placeholderKey = element.getAttribute('data-lang');
-                if (translations[lang] && translations[lang][placeholderKey]) {
-                    element.placeholder = translations[lang][placeholderKey];
-                }
-            }
-            
-            // Обновляем текст для опций
-            if (element.tagName === 'OPTION') {
-                const optionKey = element.getAttribute('data-lang');
-                if (translations[lang] && translations[lang][optionKey]) {
-                    element.textContent = translations[lang][optionKey];
-                }
-            }
-        });
-        
-        // Обновляем атрибут lang у html
-        document.documentElement.lang = lang;
-    }
 
-    
+    // Мобильное меню
+    const hamburger = $('.hamburger');
+    const navLinks = $('.nav-links');
 
-    
-    // Обработчики для кнопок переключения языка
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const lang = btn.getAttribute('data-lang');
-            switchLanguage(lang);
-        });
+    hamburger.on('click', function() {
+        navLinks.toggleClass('active');
+        $(this).toggleClass('active');
     });
-    
-    // Обработка формы регистрации
-    const registrationForm = document.getElementById('extended-registration-form');
-    if (registrationForm) {
-        registrationForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Собираем данные формы
-            const formData = new FormData(registrationForm);
-            const data = {};
-            formData.forEach((value, key) => {
-                if (key === 'events') {
-                    if (!data[key]) {
-                        data[key] = [];
-                    }
-                    data[key].push(value);
-                } else {
-                    data[key] = value;
-                }
-            });
 
-            // Здесь можно добавить отправку данных на сервер
-            console.log('Form data:', data);
+    // Анимация при прокрутке
+    const header = $('.header');
+    const scrollThreshold = 100;
 
-            // Показываем сообщение об успешной регистрации
-            alert(translations[currentLang]['registration-success'] || 'Регистрация успешно завершена!');
-            
-            // Закрываем модальное окно
-            modal.style.display = 'none';
-            document.body.style.overflow = '';
-            
-            // Очищаем форму
-            registrationForm.reset();
-        });
-    }
-    
-    // Плавная прокрутка для навигационных ссылок
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
+    $(window).on('scroll', function() {
+        if ($(this).scrollTop() > scrollThreshold) {
+            header.addClass('scrolled');
+        } else {
+            header.removeClass('scrolled');
+        }
     });
-    
-    // Анимация появления элементов при прокрутке
+
+    // Анимация появления элементов
     const observerOptions = {
+        root: null,
+        rootMargin: '0px',
         threshold: 0.1
     };
-    
-    const observer = new IntersectionObserver((entries) => {
+
+    const observer = new IntersectionObserver(function(entries, observer) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
@@ -168,25 +126,27 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.program-card, .about-content, .contact-item, .news-card').forEach(element => {
         observer.observe(element);
     });
-    
-    // Добавляем стили для анимации
-    const style = document.createElement('style');
-    style.textContent = `
-        .program-card, .about-content, .contact-item {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        
-        .program-card.visible, .about-content.visible, .contact-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    `;
-    document.head.appendChild(style);
 
-    var logo = document.querySelector('.otuken-hero-logo');
-    var heroText = document.querySelector('.hero-text');
-    if (logo) logo.classList.add('visible');
-    if (heroText) heroText.classList.add('visible');
+    // Плавная прокрутка к якорям
+    $('a[href^="#"]').on('click', function(e) {
+        if (this.hash !== '') {
+            e.preventDefault();
+            const hash = this.hash;
+            
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top - 80
+            }, 800);
+        }
+    });
+
+    // Инициализация языка при загрузке страницы
+    const currentLang = getCookie('otuken_language') || otukenData.currentLang || 'ru';
+    switchLanguage(currentLang);
+
+    // Функция для получения значения cookie
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
 }); 
